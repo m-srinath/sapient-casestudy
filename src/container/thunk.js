@@ -1,54 +1,24 @@
 import { service } from '../utility/services';
-import { clearFormData, storeLoginSucessData, storeRegisterSucessData, storeLoginErrorData } from './action';
-import { createHashHistory } from 'history';
+import { getCharacterList } from './action';
 
-export const registerUser = (data) => {
-    let requestUrl = 'http://localhost:2000/api/register';
-    const reqBody = data;
+export const getCharacter = () => {
+    let requestUrl = 'https://rickandmortyapi.com/api/character/';
     const dataset = {
-        method: "POST",
-        url: requestUrl,
-        body: reqBody
+        method: "GET",
+        url: requestUrl
     };
 
     return (dispatch) => {
         try {
             service.callApi(dataset, true)
             .then(obj => {
-                dispatch(clearFormData());
-                dispatch(storeRegisterSucessData(obj));
-            });
-         } catch (error) {
-        }
-    };
-}
-
-export const loginUser = (data) => {
-    let requestUrl = 'http://localhost:2000/api/login';
-    const reqBody = data;
-    const dataset = {
-        method: "POST",
-        url: requestUrl,
-        body: reqBody
-    };
-
-    return (dispatch) => {
-        try {
-            service.callApi(dataset, true)
-            .then(obj => {
-                dispatch(clearFormData());
-                dispatch(storeLoginSucessData(obj));
-                if(obj && obj.reponse && obj.reponse.status == 200) {
-                    let history = createHashHistory({
-                        hashType: 'noslash'
-                    });
-                    history.push('/dashboard');
-                } else {
-                    dispatch(storeLoginErrorData(obj));
+                if (obj && obj.results) {
+                    dispatch(getCharacterList(obj.results));
                 }
+                
             });
          } catch (error) {
-            console.log("Error Part")
+             console.log(error);
         }
     };
 }

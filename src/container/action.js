@@ -21,16 +21,9 @@ export function sortByDesc (data) {
     }
 }
 
-export const storeLoginErrorData = (err) => {
+export function getCharacterList (data) {
     return {
-        type: types.LOGIN_ERROR,
-        err: err.data
-    }
-}
-
-export const storeRegisterSucessData = (data) => {
-    return {
-        type: types.REGISTER_SUCCESS,
-        data
+        type: Actions.GET_CHAR_LIST,
+        payload: data
     }
 }

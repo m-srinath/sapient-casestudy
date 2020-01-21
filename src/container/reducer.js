@@ -1,19 +1,5 @@
 import * as types from './actionConstant';
 
-let initialstate = {
-    "name": '',
-    "pwd": '',
-    "regName": '',
-    "phone": '',
-    "email": '',
-    "regPassword": ''
-}
-
-let userInitialData = {
-    loginData: '',
-    registerData: ''
-}
-
 let charactersInitialState = {
     speciesList: [],
     genderList: [],
@@ -21,50 +7,13 @@ let charactersInitialState = {
     characterList: []
 }
 
-export const characters = (prevState = charactersInitialState, action) => {
+export const charsReducer = (prevState = charactersInitialState, action) => {
     switch (action.type) {
-        case 
-    }
-}
-
-export const formHandlingData = (prevState = initialstate, action) => {
-    const formName = action.name
-    switch (action.type) {
-        case types.FORM_HANDLER:
+        case types.GET_CHAR_LIST:
             return {
                 ...prevState,
-                [formName]: action.value
+                characterList: action.payload
             }
-        case types.FORM_HANDLER_CLEAR:
-            return {
-                initialstate
-            }
-        default:
-            return prevState;
-    }
-}
-
-export const userCredentialData = (prevState = userInitialData, action) => {
-    switch(action.type) {
-        case types.LOGIN_SUCCESS:
-            return {
-               ...prevState,
-               loginData: action.data
-            }
-        case types.CLEAR_USER_DATA:
-            return {
-                prevState
-            }
-        case types.LOGIN_ERROR:
-            return {
-                ...prevState,
-                loginData: action.err
-            }
-            case types.REGISTER_SUCCESS:
-                return {
-                   ...prevState,
-                   registerData: action.data
-                }
         default:
             return prevState
     }
