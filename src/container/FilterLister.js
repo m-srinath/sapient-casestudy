@@ -45,7 +45,6 @@ class FilterLister extends Component {
         let checkboxOriginList = ['Unknown', 'Post-Apocalyptic Earth', 'Nuptia 4'];
         let { allCharList } = this.state;
         return (
-            <Fragment>
             <Container>
                 <Row>
                     <Col xs="12" md="3" sm ="3" lg="3">
@@ -69,23 +68,11 @@ class FilterLister extends Component {
                     </Col>
                     <Col xs="12" md="9" sm ="9" lg="9">
                         <Row>
-                        <Col xs="12" md="4" sm ="4" lg="4">
                             <ShowResult charList={allCharList}/>
-                            
-                        </Col>
-                        <Col xs="12" md="4" sm ="4" lg="4">
-                            {/* <ShowResult /> */}
-                            
-                        </Col>
-                        <Col xs="12" md="4" sm ="4" lg="4">
-                            {/* <ShowResult /> */}
-                            
-                        </Col>
                         </Row>
                     </Col>
                 </Row>
             </Container>
-            </Fragment>
         )
     }
 }

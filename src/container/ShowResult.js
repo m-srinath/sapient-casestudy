@@ -9,9 +9,8 @@ const ShowResultData = ({charData}) => {
     let { id, name, status, species, gender, image } = charData;
     let location = charData.location.name;
   return (
-    <div>
-        <Col>
-        <Card sm="3" xs="3" md="3">
+        <Col xs="12" md="4" sm ="4" lg="4">
+        <Card>
             <CardImg top width="100%" src={image} alt="Card image cap" />
             <CardBody>
             <CardTitle>{name}</CardTitle>
@@ -28,7 +27,7 @@ const ShowResultData = ({charData}) => {
             </CardBody>
         </Card>
         </Col>
-    </div>
+
   );
 };
 
